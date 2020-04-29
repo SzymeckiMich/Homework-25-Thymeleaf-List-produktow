@@ -23,11 +23,11 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    String add(@RequestParam(required = true) String name, @RequestParam(required = true) String price) {
+    String add(@RequestParam String name, @RequestParam(required = true) String price) {
         double priceValue;
         String prodName = name;
 
-        if (!nonNull(prodName)) return "nullError";
+        if (!nonNull(prodName) || "".equals(prodName)) return "emptyNameError";
         try {
             priceValue = Double.parseDouble(price);
         } catch (NumberFormatException ex) {
