@@ -43,11 +43,18 @@ public class ProductController {
 
     @GetMapping("/list")
     String list(Model model) {
-        String sum = "Suma: " + String.valueOf(productsRepository.getPriceSum() + "zł");
-        model.addAttribute("list", productsRepository.getAll());
-        model.addAttribute("priceSum", sum);
+        addToModel(model);
         return "list";
     }
 
-
+    @GetMapping("/table")
+    String table(Model model) {
+        addToModel(model);
+        return "table";
+    }
+    private void addToModel(Model model){
+        String sum = String.valueOf(productsRepository.getPriceSum() + "zł");
+        model.addAttribute("list", productsRepository.getAll());
+        model.addAttribute("priceSum", sum);
+    }
 }
