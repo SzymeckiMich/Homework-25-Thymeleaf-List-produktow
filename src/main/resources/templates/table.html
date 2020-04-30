@@ -9,22 +9,29 @@
 </head>
 <body>
 
-<table class="table">
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/home">Menu</a> </br>
+</nav>
 
-    <tr>
-        <td col="4">Nazwa</td> <td>Cena</td>
-    </tr>
+<table class="table table-hover">
 
+    <thead class="thead-dark">
+        <tr>
+            <th col="4">Nazwa</th>
+            <th>Cena</th>
+        </tr>
+    </thead>
+<tbody>
     <tr th:each="product : ${list}">
         <td th:text="${product.name}">Nazwa produktu</td>
         <td th:text=|${product.price}zł|>Cena produktu</td>
     </tr>
 
     <tr>
-        <td>Suma: </td>
+        <td>Suma:</td>
         <td th:text="${priceSum}"></td>
     </tr>
-
+</tbody>
 </table>
 
 </body>

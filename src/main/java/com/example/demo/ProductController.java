@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DecimalFormat;
+
 import static java.util.Objects.nonNull;
 
 
@@ -16,18 +18,23 @@ public class ProductController {
     public ProductController(ProductsRepository productsRepository) {
         this.productsRepository = productsRepository;
     }
-
     @GetMapping
-    String home() {
+    String addProduct(){
         return "addProduct";
     }
+
+    @GetMapping("/home")
+    String home() {
+        return "home";
+    }
+
 
     @PostMapping("/add")
     String add(@RequestParam String name, @RequestParam(required = true) String price) {
         double priceValue;
         String prodName = name;
 
-        if (!nonNull(prodName) || "".equals(prodName)) return "emptyNameError";
+        if (null==prodName || "".equals(prodName)) return "emptyNameError";
         try {
             priceValue = Double.parseDouble(price);
         } catch (NumberFormatException ex) {
@@ -53,7 +60,8 @@ public class ProductController {
         return "table";
     }
     private void addToModel(Model model){
-        String sum = String.valueOf(productsRepository.getPriceSum() + "zł");
+        DecimalFormat formatter = new DecimalFormat("0.00zł");
+        String sum = formatter.format(productsRepository.getPriceSum());
         model.addAttribute("list", productsRepository.getAll());
         model.addAttribute("priceSum", sum);
     }

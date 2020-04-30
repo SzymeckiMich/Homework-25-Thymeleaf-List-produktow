@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.text.DecimalFormat;
+
 public class Product {
     private String name;
     private double price;
