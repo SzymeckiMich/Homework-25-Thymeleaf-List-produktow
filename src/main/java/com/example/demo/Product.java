@@ -4,7 +4,11 @@ import java.text.DecimalFormat;
 
 public class Product {
     private String name;
+    private String priceOnString;
     private double price;
+
+    public Product(){}
+
 
     public Product(String name, double price) {
         this.name = name;
@@ -17,6 +21,15 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    public String getPriceOnString() {
+        return priceOnString;
+    }
+
+    public void setPriceOnString(String priceOnString) {
+        this.priceOnString = priceOnString;
     }
 
     public double getPrice() {

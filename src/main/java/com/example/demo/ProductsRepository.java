@@ -32,4 +32,19 @@ public class ProductsRepository {
     }
 
 
+    public String validInfosAndAddProduct(Product product) {
+
+        if ("".equals(product.getName()) || null == product.getName())
+            return "emptyNameError";
+        try {
+            product.setPrice(Double.parseDouble(product.getPriceOnString()));
+            if (product.getPrice() == 0)
+                return "zeroPriceError";
+        } catch (NumberFormatException ex) {
+            return "numberFormatError";
+        }
+
+        products.add(product);
+        return "success";
+    }
 }

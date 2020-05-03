@@ -18,8 +18,10 @@ public class ProductController {
     public ProductController(ProductsRepository productsRepository) {
         this.productsRepository = productsRepository;
     }
+
     @GetMapping
-    String addProduct(){
+    String addProduct(Model model) {
+        model.addAttribute("product", new Product());
         return "addProduct";
     }
 
@@ -30,23 +32,10 @@ public class ProductController {
 
 
     @PostMapping("/add")
-    String add(@RequestParam String name, @RequestParam(required = true) String price) {
-        double priceValue;
-        String prodName = name;
-
-        if (null==prodName || "".equals(prodName)) return "emptyNameError";
-        try {
-            priceValue = Double.parseDouble(price);
-        } catch (NumberFormatException ex) {
-            return "numberFormatError";
-        }
-        if (priceValue == 0) {
-            return "zeroPriceError";
-        } else {
-            productsRepository.addProduct(new Product(prodName, priceValue));
-            return "success";
-        }
+    String add(Product product) {
+        return productsRepository.validInfosAndAddProduct(product);
     }
+
 
     @GetMapping("/list")
     String list(Model model) {
@@ -59,7 +48,8 @@ public class ProductController {
         addToModel(model);
         return "table";
     }
-    private void addToModel(Model model){
+
+    private void addToModel(Model model) {
         DecimalFormat formatter = new DecimalFormat("0.00zł");
         String sum = formatter.format(productsRepository.getPriceSum());
         model.addAttribute("list", productsRepository.getAll());
