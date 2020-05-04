@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Błąd</title>
@@ -9,9 +9,9 @@
 </head>
 </head>
 <body>
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="/home">Menu</a>
-</nav></br>
+
+<header th:insert="navbar.html :: navbar"> </header>
+
 <h1>Nie dodano nazwy produktu</h1>
 </body>
 </html>

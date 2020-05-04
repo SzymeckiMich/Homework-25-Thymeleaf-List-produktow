@@ -9,9 +9,8 @@
 </head>
 <body>
 
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="/home">Menu</a> </br>
-</nav>
+<header th:insert="navbar.html :: navbar"> </header>
+
 
 <form method="post" action="/add" class="container" th:object="${product}">
 
