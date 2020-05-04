@@ -32,8 +32,8 @@ public class ProductController {
 
 
     @PostMapping("/add")
-    String add(Product product) {
-        String statement = productsRepository.validInfosAndAddProduct(product);
+    String add(Product product, Model model) {
+        String statement = productsRepository.validInfosAndAddProduct(product, model);
         if (!statement.equals("success")) {
             product = null;
         }

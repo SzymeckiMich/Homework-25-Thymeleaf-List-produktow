@@ -10,24 +10,13 @@
 </head>
 <body>
 
-<header th:insert="navbar.html :: navbar"> </header>
-
-<!--<div class="container">-->
-<!--    <div th:each="product: ${list}">-->
-<!--        <p th:text="|${product.name} ${#numbers.formatDecimal(product.price, 1, 2)}zł|">Nazwa produktu i cena</p>-->
-<!--    </div>-->
-<!--    </br>-->
-<!--    <p th:text="|Suma: ${#numbers.formatDecimal(priceSum, 1, 2)}zł|"></p>-->
-<!--</div>-->
-
+<header th:insert="navbar.html :: navbar"></header>
 
 <ul>
     <li th:each="product: ${list}" th:text="|${product.name} ${#numbers.formatDecimal(product.price, 1, 2)}zł|"></li>
     <li>----------------</li>
     <li th:text="|Suma: ${#numbers.formatDecimal(priceSum, 1, 2)}zł|"></li>
 </ul>
-
-
 
 
 </body>

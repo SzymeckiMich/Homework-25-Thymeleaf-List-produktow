@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,17 +33,21 @@ public class ProductsRepository {
     }
 
 
-    public String validInfosAndAddProduct(Product product) {
+    public String validInfosAndAddProduct(Product product, Model model) {
 
         if ("".equals(product.getName().trim()) || null == product.getName()) {
-            return "emptyNameError";
+            model.addAttribute("statement", "Nie dodano nazwy");
+            return "error";
         }
         try {
             product.setPrice(Double.parseDouble(product.getPriceOnString()));
-            if (product.getPrice() == 0)
-                return "zeroPriceError";
+            if (product.getPrice() == 0) {
+                model.addAttribute("statement", "Cena nie może wynosić 0,00zł");
+                return "error";
+            }
         } catch (NumberFormatException ex) {
-            return "numberFormatError";
+            model.addAttribute("statement", "Podana cena nie jest liczbą");
+            return "error";
         }
 
         addProduct(product);
