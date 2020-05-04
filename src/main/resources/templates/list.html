@@ -12,14 +12,23 @@
 
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="/home">Menu</a> </br>
-</nav>
+</nav> </br>
 
-<div class="container">
-    <div th:each="product: ${list}">
-        <p th:text="|${product.name} ${product.price}|">Nazwa produktu i cena</p>
-    </div> </br>
-    <p th:text="|Suma: ${priceSum}|"></p>
-</div>
+<!--<div class="container">-->
+<!--    <div th:each="product: ${list}">-->
+<!--        <p th:text="|${product.name} ${#numbers.formatDecimal(product.price, 1, 2)}zł|">Nazwa produktu i cena</p>-->
+<!--    </div>-->
+<!--    </br>-->
+<!--    <p th:text="|Suma: ${#numbers.formatDecimal(priceSum, 1, 2)}zł|"></p>-->
+<!--</div>-->
+
+
+<ul th:each="product: ${list}">
+    <li th:text="|${product.name} ${#numbers.formatDecimal(product.price, 1, 2)}zł|"></li>
+</ul>
+    <p th:text="|Suma: ${#numbers.formatDecimal(priceSum, 1, 2)}zł|"></p>
+
+
 
 </body>
 </html>

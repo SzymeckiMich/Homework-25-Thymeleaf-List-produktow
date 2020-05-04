@@ -1,13 +1,12 @@
 package com.example.demo;
 
-import java.text.DecimalFormat;
-
 public class Product {
     private String name;
     private String priceOnString;
     private double price;
 
-    public Product(){}
+    public Product() {
+    }
 
 
     public Product(String name, double price) {
@@ -23,13 +22,12 @@ public class Product {
         this.name = name;
     }
 
+    public void setPriceOnString(String priceOnString) {
+        this.priceOnString = priceOnString;
+    }
 
     public String getPriceOnString() {
         return priceOnString;
-    }
-
-    public void setPriceOnString(String priceOnString) {
-        this.priceOnString = priceOnString;
     }
 
     public double getPrice() {

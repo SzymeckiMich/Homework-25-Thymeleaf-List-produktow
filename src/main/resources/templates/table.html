@@ -16,22 +16,22 @@
 <table class="table table-hover">
 
     <thead class="thead-dark">
-        <tr>
-            <th col="4">Nazwa</th>
-            <th>Cena</th>
-        </tr>
+    <tr>
+        <th col="4">Nazwa</th>
+        <th>Cena</th>
+    </tr>
     </thead>
-<tbody>
+    <tbody>
     <tr th:each="product : ${list}">
         <td th:text="${product.name}">Nazwa produktu</td>
-        <td th:text=|${product.price}zł|>Cena produktu</td>
+        <td th:text="|${#numbers.formatDecimal(product.price, 1, 2)}zł|">Cena produktu</td>
     </tr>
 
     <tr>
         <td>Suma:</td>
-        <td th:text="${priceSum}"></td>
+        <td th:text="|${#numbers.formatDecimal(priceSum, 1, 2)}zł|"></td>
     </tr>
-</tbody>
+    </tbody>
 </table>
 
 </body>

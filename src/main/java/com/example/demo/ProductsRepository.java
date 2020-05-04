@@ -34,8 +34,9 @@ public class ProductsRepository {
 
     public String validInfosAndAddProduct(Product product) {
 
-        if ("".equals(product.getName()) || null == product.getName())
+        if ("".equals(product.getName().trim()) || null == product.getName()) {
             return "emptyNameError";
+        }
         try {
             product.setPrice(Double.parseDouble(product.getPriceOnString()));
             if (product.getPrice() == 0)
@@ -44,7 +45,8 @@ public class ProductsRepository {
             return "numberFormatError";
         }
 
-        products.add(product);
+        addProduct(product);
         return "success";
     }
+
 }

@@ -33,7 +33,11 @@ public class ProductController {
 
     @PostMapping("/add")
     String add(Product product) {
-        return productsRepository.validInfosAndAddProduct(product);
+        String statement = productsRepository.validInfosAndAddProduct(product);
+        if (!statement.equals("success")) {
+            product = null;
+        }
+        return statement;
     }
 
 
@@ -50,9 +54,7 @@ public class ProductController {
     }
 
     private void addToModel(Model model) {
-        DecimalFormat formatter = new DecimalFormat("0.00zł");
-        String sum = formatter.format(productsRepository.getPriceSum());
         model.addAttribute("list", productsRepository.getAll());
-        model.addAttribute("priceSum", sum);
+        model.addAttribute("priceSum", productsRepository.getPriceSum());
     }
 }

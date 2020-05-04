@@ -13,11 +13,10 @@
     <a class="navbar-brand" href="/home">Menu</a> </br>
 </nav>
 
-<form method="post" action="/add" class="container"   th:object="${product}">
+<form method="post" action="/add" class="container" th:object="${product}">
 
-    Nazwa produktu: <input type="text" class="form-control"  th:field="*{name}" placeholder="Wpisz nazwę"> </br>
-    Cena produktu: <input type="text"  class="form-control" th:field="*{priceOnString}" placeholder="Wpisz cenę"> </br>
-
+    Nazwa produktu: <input type="text" class="form-control" th:field="*{name}" placeholder="Wpisz nazwę"> </br>
+    Cena produktu: <input type="text" class="form-control" th:field="*{priceOnString}" placeholder="Wpisz cenę"> </br>
 
 
     <input class="btn btn-primary" type="submit" value="Dodaj do listy">
