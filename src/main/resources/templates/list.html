@@ -23,10 +23,12 @@
 <!--</div>-->
 
 
-<ul th:each="product: ${list}">
-    <li th:text="|${product.name} ${#numbers.formatDecimal(product.price, 1, 2)}zł|"></li>
+<ul>
+    <li th:each="product: ${list}" th:text="|${product.name} ${#numbers.formatDecimal(product.price, 1, 2)}zł|"></li>
+    <li>----------------</li>
+    <li th:text="|Suma: ${#numbers.formatDecimal(priceSum, 1, 2)}zł|"></li>
 </ul>
-    <p th:text="|Suma: ${#numbers.formatDecimal(priceSum, 1, 2)}zł|"></p>
+
 
 
 
